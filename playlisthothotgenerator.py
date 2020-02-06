@@ -117,7 +117,7 @@ playlists["rock"] = []
 playlists["trap"] = []
 
 
-print("Total de canciones: " + str(len(songs)))
+print("Total songs: " + str(len(songs)))
 
 # Create the playlist by genres
 for song in songs:
