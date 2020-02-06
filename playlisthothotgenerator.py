@@ -13,9 +13,6 @@ client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secr
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager) 
 sp.trace = False
 
-# Genres Families
-
-
 # FUNCTIONS AREA
 
 # Generic Functions
@@ -124,13 +121,13 @@ for song in songs:
 	if song["track"]["artists"][0]["id"] is not None:
 		artist_id = song["track"]["artists"][0]["id"]			# TODO different artist in the same track
 		
-		if artist_id in artists_genres:							# Check if we already have the artist saved
+		if artist_id in artists_genres:										# Check if we already have the artist saved
 			genres = artists_genres[artist_id]
 		else:
-			genres = sp.artist(artist_id)["genres"]				# Get the artist genres from the API
+			genres = sp.artist(artist_id)["genres"]					# Get the artist genres from the API
 			artists_genres[artist_id] = genres
 
-		simple_genres = get_simple_genres(genres)				# Simplify the genres
+		simple_genres = get_simple_genres(genres)					# Simplify the genres
 
 		for genre in simple_genres:
 			playlists[genre].append(song["track"]["id"])		# Add the track in the specific new playlist by Genre
@@ -138,7 +135,7 @@ for song in songs:
 			if genre in simple_genres_counter:
 			 	simple_genres_counter[genre] += 1
 			else:
-			    simple_genres_counter[genre] = 1				# Initialize the counter in 1
+			    simple_genres_counter[genre] = 1						# Initialize the counter in 1
 
 
 sorted_genres = sorted(simple_genres_counter.items(), key=lambda x: x[1])
