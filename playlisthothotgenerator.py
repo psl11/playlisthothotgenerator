@@ -77,8 +77,6 @@ def get_simple_genres(song_genres):
 			simple_genres.append("Pop-Rock")
 		if is_rock(genre):
 			simple_genres.append("Rock")
-		if is_trap(genre):
-			simple_genres.append("Trap")
 
 	simple_genres = list(dict.fromkeys(simple_genres))			# Eliminate duplicated elements
 	return simple_genres
